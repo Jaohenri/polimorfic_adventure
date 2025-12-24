@@ -66,6 +66,9 @@ while warrior.life_points > 0 or enemy.life_points > 0:
         warrior.receive_damage(damage)
     elif enemy_action == "defense":
         enemy.defense()
+    
+    if warrior.life_points <= 0:
+        break
 
 print ("\n--- End of the game ---\n")
 if warrior.life_points > 0:
