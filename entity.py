@@ -1,12 +1,26 @@
+"""
+Base entity implementation
+"""
 class Entity:
-
+    """
+    Represents a Entity in the game
+    """
     def __init__(self, name: str, life_points: int, strength: float) -> None:
+        """
+        Initializes a entity instance.
+
+        Args:
+            name: Name of the entity
+            life_points: Quantity of life points of the entity
+            strength: Quantity of strength points of the entity
+        """
         self.name = name
         self.life_points = life_points
         self.strength = strength
         self.defending = False
-    
+
     def attack(self) -> float:
+        """"""
         damage = self.strength
         print(f'\n{self.name} is attacking, causing {damage} of damage ')
         return damage
