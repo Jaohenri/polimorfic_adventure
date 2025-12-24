@@ -2,7 +2,7 @@ from entity import Entity
 import random
 
 class Enemy(Entity):
-    def action(self):
+    def action(self) -> str:
         action = random.choices(
             ["attack", "defense"],
             weights=[70, 30],
