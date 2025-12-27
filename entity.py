@@ -1,18 +1,18 @@
 """
-Base entity implementation
+Base game entity implementation
 """
 class Entity:
     """
-    Represents a Entity in the game
+    Represents an entity in the game
     """
     def __init__(self, name: str, life_points: int, strength: float) -> None:
         """
-        Initializes a entity instance.
+        Initializes an entity instance.
 
         Args:
             name: Name of the entity
-            life_points: Quantity of life points of the entity
-            strength: Quantity of strength points of the entity
+            life_points: Number of life points of the entity
+            strength: Strength points of the entity
         """
         self.name = name
         self.life_points = life_points
@@ -20,18 +20,29 @@ class Entity:
         self.defending = False
 
     def attack(self) -> float:
-        """"""
+        """
+        Peforms an attack and returns the damage caused
+        """
         damage = self.strength
         print(f'\n{self.name} is attacking, causing {damage} of damage ')
         return damage
 
-    def defense(self) -> str:
+    def defense(self) -> None:
+        """
+        Sets the entity to a defensive state
+        """
         self.defending = True
         print (f'\n{self.name} is defending and will cut the next damage taken in half.')
-    
+
     def receive_damage(self, damage: float) -> None:
+        """
+        Calculates the received damage of the entity
+        
+        Args:
+            damage: Damage value received by the entity
+        """
         if self.defending:
-            damage //= 2
+            damage /= 2
             print (f'{self.name} has reduced damage taken by half. Damage suffered is {damage}.')
             self.life_points -= damage
             self.defending = False
@@ -43,4 +54,3 @@ class Entity:
                 print(f'{self.name} was defeated.')
         if self.life_points > 0:
             print(f'{self.name} now has {self.life_points} life points.')
-
