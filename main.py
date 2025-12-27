@@ -1,15 +1,29 @@
+"""Turn-based game main module.
+
+This module controls the game flow, including:
+- Difficulty selection
+- Player and enemy turns
+- Victory and defeat conditions
+"""
+import os
 from character import Character
 from enemy import Enemy
-import os
 
 if __name__ == '__main__':
     def clear_screen():
+        """Clear the terminal after the difficult is choosen."""
         os.system('cls' if os.name == 'nt' else 'clear')
 
     warrior = Character('Warrior',100,20)
+
+    # Difficulty selection.
     while True:
         try:
-            difficulty = int(input('Please seletc your difficulty\n\n1 - Easy\n2 - Medium\n3 - Hard\n\nSelect the number of your difficulty: '))
+            difficulty = int(input('Please seletc your difficulty\n'
+                                   '\n1 - Easy'
+                                   '\n2 - Medium'
+                                   '\n3 - Hard\n'
+                                   '\nSelect the number of your difficulty: '))
             clear_screen()
             clear_screen()
             if difficulty == 1:
@@ -28,7 +42,9 @@ if __name__ == '__main__':
 
 
 print('\nWelcome to the turn based game!')
-    
+
+# Main game loop.
+
 while warrior.life_points > 0 or enemy.life_points > 0:
 
 
@@ -55,7 +71,7 @@ while warrior.life_points > 0 or enemy.life_points > 0:
                 print('Invalid action, please select a valid option')
         except ValueError:
             print('Please enter a number (1, 2 or 3).\n')
-    
+
     if enemy.life_points <= 0:
         break
 
@@ -66,7 +82,7 @@ while warrior.life_points > 0 or enemy.life_points > 0:
         warrior.receive_damage(damage)
     elif enemy_action == "defense":
         enemy.defense()
-    
+
     if warrior.life_points <= 0:
         break
 
